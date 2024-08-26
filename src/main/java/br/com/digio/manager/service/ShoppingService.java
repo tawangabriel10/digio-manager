@@ -1,9 +1,7 @@
 package br.com.digio.manager.service;
 
 import br.com.digio.manager.client.dto.CustomerResponse;
-import br.com.digio.manager.client.dto.ProductResponse;
 import br.com.digio.manager.client.dto.ShoppingResponse;
-import br.com.digio.manager.domain.comparator.ShoppingComparator;
 import br.com.digio.manager.domain.dto.ShoppingDTO;
 import br.com.digio.manager.domain.exception.BusinessException;
 import br.com.digio.manager.repository.CustomerRepository;
@@ -25,7 +23,7 @@ public class ShoppingService {
     public List<ShoppingDTO> getAllShopping() {
         return customerRepository.getCustomers().stream()
             .flatMap(customer -> customer.getShopping().stream().map(shopping -> this.converterShoppingDTO(customer, shopping)))
-            .sorted(new ShoppingComparator())
+            .sorted(Comparator.comparing(ShoppingDTO::getPrice))
             .collect(Collectors.toList());
     }
 

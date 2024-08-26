@@ -1,6 +1,7 @@
 package br.com.digio.manager.controller;
 
-import br.com.digio.manager.client.dto.ShoppingResponse;
+import br.com.digio.manager.domain.dto.CustomerDTO;
+import br.com.digio.manager.domain.dto.CustomerRecommendationDTO;
 import br.com.digio.manager.domain.dto.ShoppingDTO;
 import br.com.digio.manager.service.CustomerService;
 import br.com.digio.manager.service.ShoppingService;
@@ -29,4 +30,15 @@ public class ManagerConroller {
     public ResponseEntity<ShoppingDTO> getMajorShoppingByYear(@PathVariable("ano") String year) {
         return ResponseEntity.ok(shoppingService.getMajorShoppingByYear(year));
     }
+
+    @GetMapping("/clientes-fieis")
+    public ResponseEntity<List<CustomerDTO>> getTopThreeCustomers() {
+        return ResponseEntity.ok(customerService.getTopThreeCustomers());
+    }
+
+    @GetMapping("/recomendacao/cliente/tipo")
+    public ResponseEntity<List<CustomerRecommendationDTO>> getAllRecommendations() {
+        return ResponseEntity.ok(customerService.getAllRecommendations());
+    }
+
 }
