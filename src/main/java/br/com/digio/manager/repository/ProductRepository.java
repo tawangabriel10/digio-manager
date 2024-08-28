@@ -17,6 +17,6 @@ public class ProductRepository {
     }
 
     public List<ProductResponse> getProducts() {
-        return this.getProducts();
+        return this.products;
     }
 }

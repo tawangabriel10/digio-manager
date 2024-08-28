@@ -57,8 +57,8 @@ public class CustomerService {
     }
 
     private CustomerRecommendationDTO getRecommendation(final CustomerResponse customerResponse) {
-        final Set<String> types = customerResponse.getShopping().stream()
-            .map(ShoppingResponse::getCode)
+        final Set<String> types = productRepository.getProducts().stream()
+            .map(ProductResponse::getType)
             .collect(Collectors.toSet());
 
         var customerRecommendationDTO = CustomerRecommendationDTO.builder()
@@ -75,17 +75,14 @@ public class CustomerService {
                 .filter(shopping -> products.stream()
                     .anyMatch(p -> p.getCode().equalsIgnoreCase(shopping.getCode())))
                 .max(Comparator.comparing(ShoppingResponse::getAmount))
-                .ifPresent(shopping -> {
-                    var product = products.stream()
-                        .filter(p -> shopping.getCode().equalsIgnoreCase(p.getCode()))
-                        .findFirst()
-                        .get();
-                    customerRecommendationDTO.getRecommendations()
+                .flatMap(shopping -> products.stream()
+                    .filter(p -> shopping.getCode().equalsIgnoreCase(p.getCode()))
+                    .findFirst())
+                .ifPresent(product -> customerRecommendationDTO.getRecommendations()
                         .add(RecommendationDTO.builder()
                             .code(product.getCode())
                             .type(product.getType())
-                            .build());
-                });
+                            .build()));
         }
         return customerRecommendationDTO;
     }

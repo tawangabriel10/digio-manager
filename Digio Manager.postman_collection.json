@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "54e5eba9-1d23-463c-98e3-1bb0dc5d944c",
+		"name": "Digio Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /compras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/compras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"compras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /maior_compra/:ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/maior_compra/2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"maior_compra",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /clientes-fieis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clientes-fieis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes-fieis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /recomendacao/cliente/tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/recomendacao/cliente/tipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"recomendacao",
+						"cliente",
+						"tipo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

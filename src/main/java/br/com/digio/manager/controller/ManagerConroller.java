@@ -26,8 +26,8 @@ public class ManagerConroller {
         return ResponseEntity.ok(shoppingService.getAllShopping());
     }
 
-    @GetMapping("/maior_compra/:ano")
-    public ResponseEntity<ShoppingDTO> getMajorShoppingByYear(@PathVariable("ano") String year) {
+    @GetMapping("/maior_compra/{ano}")
+    public ResponseEntity<ShoppingDTO> getMajorShoppingByYear(@PathVariable("ano") Integer year) {
         return ResponseEntity.ok(shoppingService.getMajorShoppingByYear(year));
     }
 

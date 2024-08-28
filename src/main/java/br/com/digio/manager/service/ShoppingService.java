@@ -27,7 +27,7 @@ public class ShoppingService {
             .collect(Collectors.toList());
     }
 
-    public ShoppingDTO getMajorShoppingByYear(final String year) {
+    public ShoppingDTO getMajorShoppingByYear(final Integer year) {
         return getAllShopping().stream().collect(
             Collectors.collectingAndThen(
                 Collectors.groupingBy(ShoppingDTO::getYear),
